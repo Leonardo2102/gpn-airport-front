@@ -2,10 +2,10 @@ button {
   outline: none;
 }
 
-.flight-list {
-  width: 70%;
+.mat-datepicker {
+  outline: none;
 }
 
-.filtro {
-  width: 25%;
+.flight-list {
+  width: 85%;
 }
