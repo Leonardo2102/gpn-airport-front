@@ -1,0 +1,11 @@
+button {
+  outline: none;
+}
+
+.flight-list {
+  width: 70%;
+}
+
+.filtro {
+  width: 25%;
+}

@@ -10,6 +10,8 @@ import { FlightService } from '../Services/flight.service';
 export class FlightListComponent implements OnInit {
   Flights: Flight[] = [];
   loading: Boolean = true;
+  Picker1: any;
+  Picker2: any;
 
   constructor(private flightService: FlightService) {
     this.getFlights();

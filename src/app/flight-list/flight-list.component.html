@@ -1,1 +1,61 @@
-<p>flight-list works!</p>
+<div class="d-flex container-fluid justify-content-center align-items-center">
+  <div class="flight-list list-group list-group-flush pb-5">
+    <div layout="row">
+      <mat-spinner *ngIf="loading"></mat-spinner>
+      <h3 class="pt-2 pb-2">USUARIOS</h3>
+      <mat-form-field class="filtro px-3" appearance="fill">
+        <mat-label>Select</mat-label>
+        <mat-select>
+          <mat-option value="one">First option</mat-option>
+          <mat-option value="two">Second option</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="filtro px-3" appearance="fill">
+        <mat-label>Select</mat-label>
+        <mat-select>
+          <mat-option value="one">First option</mat-option>
+          <mat-option value="two">Second option</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="filtro px-3" appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="Picker1" />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="Picker1"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #Picker1></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="filtro px-3" appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="Picker2" />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="Picker2"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #Picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div
+      class="list-group-item list-group-item-action"
+      aria-current="true"
+      *ngFor="let flight of Flights; index as i"
+    >
+      <div class="container-fluid">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-7">
+            <div>
+              <p>Origin:{{ flight.origin }}</p>
+              <p>Destination:{{ flight.destination }}</p>
+            </div>
+          </div>
+          <div class="col-3 align-self-start">
+            <div class="d-flex justify-content-center">
+              <button mat-flat-button color="primary">Book Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
