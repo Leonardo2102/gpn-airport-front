@@ -16,7 +16,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-
+import { FormsModule } from '@angular/forms';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 @NgModule({
   declarations: [AppComponent, NavBarComponent, FlightListComponent],
   imports: [
@@ -33,6 +34,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatNativeDateModule,
     MatInputModule,
     MatSelectModule,
+    FormsModule,
+    MatSlideToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

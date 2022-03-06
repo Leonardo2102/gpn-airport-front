@@ -1,40 +1,58 @@
 <div class="d-flex container-fluid justify-content-center align-items-center">
   <div class="flight-list list-group list-group-flush pb-5">
+    <h3 class="pt-2 pb-2">Search for a flight!</h3>
+    <div class="py-3" layout="row"></div>
+    <mat-slide-toggle [(ngModel)]="RoundTrip">{{
+      RoundTrip ? "Round Trip" : "One Way"
+    }}</mat-slide-toggle>
     <div layout="row">
       <mat-spinner *ngIf="loading"></mat-spinner>
-      <h3 class="pt-2 pb-2">USUARIOS</h3>
+      <mat-spinner *ngIf="loading2"></mat-spinner>
       <mat-form-field class="filtro px-3" appearance="fill">
-        <mat-label>Select</mat-label>
-        <mat-select>
-          <mat-option value="one">First option</mat-option>
-          <mat-option value="two">Second option</mat-option>
+        <mat-label>From</mat-label>
+        <mat-select (selectionChange)="Origin = $event.value">
+          <mat-option value="Caracas">Caracas</mat-option>
+          <mat-option value="Madrid">Madrid</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field class="filtro px-3" appearance="fill">
-        <mat-label>Select</mat-label>
-        <mat-select>
-          <mat-option value="one">First option</mat-option>
-          <mat-option value="two">Second option</mat-option>
+        <mat-label>To</mat-label>
+        <mat-select (selectionChange)="Destination = $event.value">
+          <mat-option value="Caracas">Caracas</mat-option>
+          <mat-option value="Madrid">Madrid</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field class="filtro px-3" appearance="fill">
-        <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="Picker1" />
+        <mat-label>Departue</mat-label>
+        <input matInput [matDatepicker]="Picker1" [(ngModel)]="DateP1" />
         <mat-datepicker-toggle
           matSuffix
           [for]="Picker1"
         ></mat-datepicker-toggle>
         <mat-datepicker #Picker1></mat-datepicker>
       </mat-form-field>
-      <mat-form-field class="filtro px-3" appearance="fill">
-        <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="Picker2" />
-        <mat-datepicker-toggle
-          matSuffix
-          [for]="Picker2"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #Picker2></mat-datepicker>
-      </mat-form-field>
+      <div *ngIf="RoundTrip">
+        <mat-form-field class="filtro px-3" appearance="fill">
+          <mat-label>Return</mat-label>
+          <input matInput [matDatepicker]="Picker2" [(ngModel)]="DateP2" />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="Picker2"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #Picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="
+          RoundTrip
+            ? searchRound(Origin, Destination, DateP1, DateP2)
+            : searchOneWay(Origin, Destination, DateP1)
+        "
+      >
+        Search <mat-icon>search</mat-icon>
+      </button>
     </div>
     <div
       class="list-group-item list-group-item-action"

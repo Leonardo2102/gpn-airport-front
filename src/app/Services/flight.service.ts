@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Flight } from '../interfaces/flight';
+import { FlightFilters } from '../interfaces/flightFilter';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +22,10 @@ export class FlightService {
     return this.http.get<Flight[]>(path, this.httpOptions);
   }
 
+  getFiltered(filters: FlightFilters) {
+    const path = `${this.api}filter/${filters.origin}/${filters.destination}/${filters.date}`;
+    return this.http.get<Flight[]>(path, this.httpOptions);
+  }
   /*getRol() {
     const path = `${this.api}roles`;
     return this.http.get<Rol[]>(path);
