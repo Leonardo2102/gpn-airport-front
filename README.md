@@ -1,6 +1,6 @@
 # GPN Aiport WebApp
 
-## :mag_right: Version
+### :mag_right: Version
 
 :sparkles: Release version: 1.0.0
 
@@ -10,7 +10,7 @@
 
 ```bash
 
-$ npm install -g @angular/cli
+npm install -g @angular/cli
 
 ```
 
