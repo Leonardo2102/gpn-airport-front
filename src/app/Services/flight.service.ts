@@ -1,17 +1,24 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Flight } from '../interfaces/flight';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FlightService {
-  private api = 'http://localhost:3000';
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
+    }),
+  };
+  private api = 'http://localhost:3000/';
   constructor(private http: HttpClient) {}
 
   get() {
     const path = this.api;
-    return this.http.get<Flight[]>(path);
+    return this.http.get<Flight[]>(path, this.httpOptions);
   }
 
   /*getRol() {
