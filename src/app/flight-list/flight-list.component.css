@@ -1,11 +1,44 @@
+.no-outline {
+  outline: none;
+}
+
 button {
   outline: none;
 }
-
-.mat-datepicker {
-  outline: none;
-}
-
 .flight-list {
   width: 85%;
+}
+
+.title {
+  color: #111;
+  font-family: "Open Sans Condensed", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 64px;
+  margin: 0 0 0;
+  padding: 20px 20px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.sub-title {
+  color: #111;
+  font-family: "Open Sans Condensed", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 64px;
+  margin: 0 0 0;
+  padding: 20px 30px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.filters {
+  margin: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 15px;
+  padding-left: 10px;
+  border-radius: 5px;
+  background-color: white;
 }

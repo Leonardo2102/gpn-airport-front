@@ -1,27 +1,31 @@
 <div class="container-fluid d-flex flex-column align-items-center">
-  <div class="flight-list list-group list-group-flush pb-5">
-    <h3 class="pt-2 pb-2">Search for a flight!</h3>
-    <div class="py-3" layout="row"></div>
-    <mat-slide-toggle [(ngModel)]="RoundTrip">{{
+  <div class="filters mat-elevation-z1">
+    <h1 class="title">Search for a flight!</h1>
+    <mat-slide-toggle class="px-3 pb-5" [(ngModel)]="RoundTrip">{{
       RoundTrip ? "Round Trip" : "One Way"
     }}</mat-slide-toggle>
     <div>
-      <mat-spinner *ngIf="loading"></mat-spinner>
       <mat-form-field class="filtro px-3" appearance="fill">
         <mat-label>From</mat-label>
         <mat-select (selectionChange)="Origin = $event.value">
-          <mat-option value="Caracas">Caracas</mat-option>
-          <mat-option value="Madrid">Madrid</mat-option>
+          <mat-option
+            *ngFor="let Dest of Destinations; index as i"
+            value="{{ Dest }}"
+            >{{ Dest }}</mat-option
+          >
         </mat-select>
       </mat-form-field>
-      <mat-form-field class="filtro px-3" appearance="fill">
+      <mat-form-field class="px-3" appearance="fill">
         <mat-label>To</mat-label>
         <mat-select (selectionChange)="Destination = $event.value">
-          <mat-option value="Caracas">Caracas</mat-option>
-          <mat-option value="Madrid">Madrid</mat-option>
+          <mat-option
+            *ngFor="let Dest of Destinations; index as i"
+            value="{{ Dest }}"
+            >{{ Dest }}</mat-option
+          >
         </mat-select>
       </mat-form-field>
-      <mat-form-field class="filtro px-3" appearance="fill">
+      <mat-form-field class="px-3" appearance="fill">
         <mat-label>Departue</mat-label>
         <input matInput [matDatepicker]="Picker1" [(ngModel)]="DateP1" />
         <mat-datepicker-toggle
@@ -53,7 +57,12 @@
         Search <mat-icon>search</mat-icon>
       </button>
     </div>
-    <h3 class="pt-2 pb-2">Going</h3>
+  </div>
+  <h1 class="sub-title pt-2 pb-2">Going</h1>
+  <div class="flight-list list-group list-group-flush pb-5">
+    <div class="d-flex justify-content-center">
+      <mat-spinner *ngIf="loading"></mat-spinner>
+    </div>
     <div
       class="list-group-item list-group-item-action"
       aria-current="true"
@@ -83,9 +92,11 @@
       </div>
     </div>
   </div>
+  <h1 class="sub-title pt-2 pb-2">Return</h1>
   <div class="flight-list list-group list-group-flush pb-5">
-    <mat-spinner *ngIf="loading2"></mat-spinner>
-    <h3 class="pt-2 pb-2">Return</h3>
+    <div class="d-flex justify-content-center">
+      <mat-spinner *ngIf="loading2"></mat-spinner>
+    </div>
     <div
       class="list-group-item list-group-item-action"
       aria-current="true"

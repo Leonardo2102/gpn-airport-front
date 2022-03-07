@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Flight } from '../interfaces/flight';
 import { FlightService } from '../Services/flight.service';
 import { FlightFilters } from '../interfaces/flightFilter';
@@ -9,6 +9,7 @@ import { FlightFilters } from '../interfaces/flightFilter';
   styleUrls: ['./flight-list.component.css'],
 })
 export class FlightListComponent implements OnInit {
+  Destinations: string[] = ['Caracas', 'Miami', 'Bogota'];
   Flights: Flight[] = [];
   ReturnFlights: Flight[] = [];
   loading: Boolean = true;
@@ -34,6 +35,8 @@ export class FlightListComponent implements OnInit {
   }
 
   searchOneWay(Origin: string, Destination: string, flightDate: string) {
+    this.loading = true;
+    this.ReturnFlights = [];
     let valid: Boolean = true;
     let reason: string = '';
     if (Origin == '') {
@@ -73,6 +76,8 @@ export class FlightListComponent implements OnInit {
     returnDate: string
   ) {
     let valid: Boolean = true;
+    this.loading = true;
+    this.loading2 = true;
     let reason: string = '';
     if (Origin == '') {
       valid = false;
@@ -111,7 +116,7 @@ export class FlightListComponent implements OnInit {
       this.flightService.getFiltered(filtersReturn).subscribe((result) => {
         this.ReturnFlights = result;
         console.log(this.ReturnFlights);
-        this.loading = false;
+        this.loading2 = false;
       });
     } else {
       alert('Please select a valid ' + reason);
